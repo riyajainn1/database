@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn CodePrep</title>
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+    
+
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+.login {
+    background: #28a745;
+}
+
+.signup {
+    background: #dc3545;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+</style>
+
+<body>
+
+  <form name="submit-to-google-sheet">
+    <input type="text" name="email" placeholder="email" required>
+    <button>submit</button>
+
+  </form>
+  <div class="container">
+      <div class="buttons">
+        <a href="login.html" class="btn login">Login</a>
+        <a href="signup.html" class="btn signup">Signup</a>
+      </div>
+    </div>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycby6U_59eLP5FSybdVhRSNxfITLso9rVqCtJDHs6fpfsqAG9yUIQAgYOWU4HPZFyTMAS/exec'
+      const form = document.forms['submit-to-google-sheet']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+</body>
+</html>
+              
